@@ -4,24 +4,29 @@ import IconList from './IconList';
 import IconDetail from './IconDetail';
 import SearchBar from './SearchBar';
 import CategoryFilter from './CategoryFilter';
+import IconItem from './IconItem';
 
-export default function iconLibrary() {
+export default function IconLibrary() {
 
-const [selectedIcon, setSelectedIcon ] = useState('');
-const [selectedCategory, setSelectedCategory ] = useState('');
-const [searchTerm, setSearchTerm] = useState('');
+    const [selectedIcon, setSelectedIcon] = useState('');
+    const [selectedCategory, setSelectedCategory] = useState('');
+    const [searchTerm, setSearchTerm] = useState('');
 
-const categories = ['All', ...Array.from(new Set(iconsData.map(icon => icon.category)))];
+    const categories = ['All', ...Array.from(new Set(iconsData.map(icon => icon.category)))];
 
-const filteredIcons = iconsData.filter(icon => {
-    const matchedCategory = selectedCategory === 'All' || selectedCategory === icon.category
-    const matchesSearch = icon.name.toLowerCase().includes(searchTerm.toLowerCase());
-    return matchedCategory && matchesSearch
-})
+    const filteredIcons = iconsData.filter(icon => {
+        const matchedCategory = selectedCategory === 'All' || selectedCategory === icon.category
+        const matchesSearch = icon.name.toLowerCase().includes(searchTerm.toLowerCase());
+        return matchedCategory && matchesSearch
+    })
 
-  return (
-    <div>iconLibrary
-        console.log(iconsData)
-    </div>
-  )
+    return (
+        <div style={{ display: "flex", marginTop: "2rem" }}>
+            <IconList
+                icons={filteredIcons}
+                selectedIcon={selectedIcon}
+                onIconClick={setSelectedIcon}
+            />    
+        </div>
+    )
 }
