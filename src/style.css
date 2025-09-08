@@ -1,8 +1,0 @@
-.icon-item.selected {
-    box-shadow: 0 0 5px #007aff;
-  }
-  .icon-item {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
