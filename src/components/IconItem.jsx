@@ -1,7 +1,7 @@
 import React from 'react'
 import DOMPurify from 'dompurify'
 
-export default function IconItem(icon, isSelected, onClick) {
+export default function IconItem({icon, isSelected, onClick}) {
   return (
     <div
       className={`icon-item${isSelected ? " selected" : ""}`}

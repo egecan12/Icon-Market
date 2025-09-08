@@ -9,24 +9,27 @@ import IconItem from './IconItem';
 export default function IconLibrary() {
 
     const [selectedIcon, setSelectedIcon] = useState('');
-    const [selectedCategory, setSelectedCategory] = useState('');
+    const [selectedCategory, setSelectedCategory] = useState('All');
     const [searchTerm, setSearchTerm] = useState('');
 
     const categories = ['All', ...Array.from(new Set(iconsData.map(icon => icon.category)))];
 
     const filteredIcons = iconsData.filter(icon => {
-        const matchedCategory = selectedCategory === 'All' || selectedCategory === icon.category
+        const matchesCategory = selectedCategory === "All" || icon.category === selectedCategory;
         const matchesSearch = icon.name.toLowerCase().includes(searchTerm.toLowerCase());
-        return matchedCategory && matchesSearch
+        return matchesCategory && matchesSearch
     })
+    console.log(filteredIcons)
+    console.log(iconsData)
 
     return (
         <div style={{ display: "flex", marginTop: "2rem" }}>
-            <IconList
-                icons={filteredIcons}
-                selectedIcon={selectedIcon}
-                onIconClick={setSelectedIcon}
-            />    
-        </div>
+        <IconList
+          icons={filteredIcons}
+          selectedIcon={selectedIcon}
+          onIconClick={setSelectedIcon}
+        />
+        <IconDetail icon={selectedIcon} />
+      </div>
     )
 }
