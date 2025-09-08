@@ -23,7 +23,12 @@ export default function IconLibrary() {
     console.log(iconsData)
 
     return (
-        <div style={{ display: "flex", marginTop: "2rem" }}>
+      <div className="icon-library">
+      <div style={{ display: "flex", gap: "1rem" }}>
+        <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+        <CategoryFilter categories={categories} selected={selectedCategory} setSelected={setSelectedCategory} />
+      </div>
+      <div style={{ display: "flex", marginTop: "2rem" }}>
         <IconList
           icons={filteredIcons}
           selectedIcon={selectedIcon}
@@ -31,5 +36,6 @@ export default function IconLibrary() {
         />
         <IconDetail icon={selectedIcon} />
       </div>
+    </div>
     )
 }
