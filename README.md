@@ -174,8 +174,8 @@ npm run lint         # Run ESLint
 
 ## 🎨 Screenshots
 
-<img width="2175" height="1250" alt="Macbook-Air-localhost (1)" src="https://github.com/user-attachments/assets/dd009cc9-17ab-4c59-af21-d06ed6eb7cfd" />
-<img width="688" height="1393" alt="iPhone-14-Plus-localhost" src="https://github.com/user-attachments/assets/5db30642-56ce-4e76-820c-74a5a04b1df5" />
+<img width="250" height="250" alt="Macbook-Air-localhost (1)" src="https://github.com/user-attachments/assets/dd009cc9-17ab-4c59-af21-d06ed6eb7cfd" />
+<img width="250" height="250" alt="iPhone-14-Plus-localhost" src="https://github.com/user-attachments/assets/5db30642-56ce-4e76-820c-74a5a04b1df5" />
 ## 📝 License
 
 This project is created for interview purposes and demonstrates modern React development practices.
