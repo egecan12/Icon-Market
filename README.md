@@ -120,4 +120,3 @@ npm run lint         # Run ESLint
 ---
 
 **Egecan Kahyaoglu**  
-*React Developer*
