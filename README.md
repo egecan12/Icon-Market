@@ -183,6 +183,4 @@ This project is created for interview purposes and demonstrates modern React dev
 
 ---
 
-**Built with ❤️ for interview demonstration**
-
-*This project showcases modern React development patterns, clean architecture, and professional code organization suitable for production applications.*
+Egecan Kahyaoglu
