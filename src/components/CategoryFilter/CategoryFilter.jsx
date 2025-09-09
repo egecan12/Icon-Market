@@ -1,4 +1,5 @@
 import React from 'react'
+import './CategoryFilter.css'
 
 export default function CategoryFilter({ categories, selectedCategory, onCategoryChange }) {
   return (

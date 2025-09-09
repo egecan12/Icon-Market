@@ -1,5 +1,6 @@
 import React from 'react'
-import IconItem from "./IconItem";
+import IconItem from "../IconItem";
+import './IconList.css';
 
 export default function IconList({ icons, selectedIcon, onIconClick }) {
   if (!icons || icons.length === 0) {

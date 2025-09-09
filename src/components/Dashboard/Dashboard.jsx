@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
-import iconsData from '../data/icon-index.json'
-import IconList from './IconList';
-import IconDetail from './IconDetail';
-import SearchBar from './SearchBar';
-import CategoryFilter from './CategoryFilter';
+import iconsData from '../../data/icon-index.json'
+import IconList from '../IconList';
+import IconDetail from '../IconDetail';
+import SearchBar from '../SearchBar';
+import CategoryFilter from '../CategoryFilter';
+import './Dashboard.css';
 
 export default function Dashboard() {
 

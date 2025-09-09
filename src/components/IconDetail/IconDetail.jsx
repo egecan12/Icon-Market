@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import DOMPurify from 'dompurify';
+import './IconDetail.css';
 
 function IconDetail({ icon }) {
   const [copied, setCopied] = useState(false);
+  const [SVGCopied, setSVGCopied] = useState(false);
   const [downloaded, setDownloaded] = useState(false);
 
   if (!icon) {
@@ -32,6 +34,8 @@ function IconDetail({ icon }) {
   const handleCopySVG = async () => {
     try {
       await navigator.clipboard.writeText(icon.svg);
+      setSVGCopied(true);
+      setTimeout(() => setSVGCopied(false), 2000);
     } catch (err) {
       alert("Failed to copy SVG code");
     }
@@ -80,13 +84,13 @@ function IconDetail({ icon }) {
         
         <button 
           onClick={handleCopySVG} 
-          className="quick-action-btn"
+          className={`quick-action-btn ${SVGCopied ? 'success' : ''}`}
           title="Copy SVG code"
         >
           <svg viewBox="0 0 20 20" fill="currentColor">
             <path fillRule="evenodd" d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd"/>
           </svg>
-          Copy SVG
+          {SVGCopied ? 'Copied!' : 'Copy SVG'}
         </button>
         
         <button 

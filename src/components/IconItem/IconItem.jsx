@@ -1,5 +1,6 @@
 import React from 'react'
 import DOMPurify from 'dompurify'
+import './IconItem.css'
 
 export default function IconItem({ icon, isSelected, onClick }) {
   return (

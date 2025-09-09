@@ -1,0 +1,66 @@
+/* IconItem Component Styles */
+.icon-item {
+  background: var(--tertiary-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1rem;
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.icon-item:hover {
+  border-color: var(--accent-primary);
+  background: var(--card-bg);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.icon-item.selected {
+  border-color: var(--border-accent);
+  background: var(--glass-bg);
+  box-shadow: 0 0 0 1px var(--accent-primary), var(--shadow-glow);
+  position: relative;
+}
+
+.icon-item.selected::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--accent-gradient);
+  opacity: 0.08;
+  border-radius: inherit;
+}
+
+.icon-item .icon-display {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-primary);
+}
+
+.icon-item .icon-display svg {
+  width: 100%;
+  height: 100%;
+  fill: currentColor;
+}
+
+.icon-item .icon-name {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-align: center;
+  word-break: break-word;
+  line-height: 1.2;
+}
+
+.icon-item.selected .icon-name {
+  color: var(--accent-primary);
+}

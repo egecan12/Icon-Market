@@ -1,0 +1,42 @@
+/* IconList Component Styles */
+.icon-list-container {
+  max-height: 80vh;
+  overflow-y: auto;
+  padding-right: 0.5rem;
+}
+
+.icon-list-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.icon-list-container::-webkit-scrollbar-track {
+  background: var(--tertiary-bg);
+  border-radius: 3px;
+}
+
+.icon-list-container::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 3px;
+}
+
+.icon-list-container::-webkit-scrollbar-thumb:hover {
+  background: var(--border-hover);
+}
+
+.icon-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 1.5rem;
+  padding: 1rem;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: var(--text-muted);
+}
+
+.empty-state h3 {
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+}
