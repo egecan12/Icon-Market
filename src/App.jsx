@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import IconLibrary from './components/IconLibrary'
-import './App.css'
 
 function App() {
   return (

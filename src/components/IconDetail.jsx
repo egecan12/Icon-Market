@@ -32,7 +32,6 @@ function IconDetail({ icon }) {
   const handleCopySVG = async () => {
     try {
       await navigator.clipboard.writeText(icon.svg);
-      alert("SVG code copied to clipboard!");
     } catch (err) {
       alert("Failed to copy SVG code");
     }
