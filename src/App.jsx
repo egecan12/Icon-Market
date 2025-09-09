@@ -1,13 +1,13 @@
 import { useState } from 'react'
-import IconLibrary from './components/IconLibrary'
+import Dashboard from './components/Dashboard'
 
 function App() {
   return (
     <div className="app-container">
       <header>
-        <h1>Icon Library</h1>
+        <h1>Iconflix</h1>
       </header>
-      <IconLibrary />
+      <Dashboard />
     </div>
   )
 }

@@ -191,26 +191,6 @@ button:focus-visible {
   overflow: hidden;
 }
 
-.card::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: var(--accent-gradient);
-  opacity: 0;
-  transition: var(--transition);
-  border-radius: inherit;
-  z-index: -1;
-}
-
-.card:hover {
-  border-color: var(--border-accent);
-  box-shadow: var(--shadow-intense), var(--shadow-glow);
-  transform: translateY(-2px);
-}
-
-.card:hover::before {
-  opacity: 0.03;
-}
 
 /* Search and Filter Components */
 .search-section {

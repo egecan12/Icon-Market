@@ -5,7 +5,7 @@ import IconDetail from './IconDetail';
 import SearchBar from './SearchBar';
 import CategoryFilter from './CategoryFilter';
 
-export default function IconLibrary() {
+export default function Dashboard() {
 
     const [selectedIcon, setSelectedIcon] = useState(null);
     const [selectedCategory, setSelectedCategory] = useState('All');
