@@ -5,6 +5,12 @@ A responsive icon library management system built with React and modern CSS arch
 ![React](https://img.shields.io/badge/React-18.x-blue.svg)
 ![Vite](https://img.shields.io/badge/Vite-5.x-purple.svg)
 
+## Screenshots
+
+<img width="350" height="350" alt="Macbook-Air-localhost (1)" src="https://github.com/user-attachments/assets/dd009cc9-17ab-4c59-af21-d06ed6eb7cfd" />
+<img width="125" height="350" alt="iPhone-14-Plus-localhost" src="https://github.com/user-attachments/assets/5db30642-56ce-4e76-820c-74a5a04b1df5" />
+
+
 ## Features
 
 - Real-time search with live filtering
@@ -112,10 +118,6 @@ npm run preview      # Preview production build
 npm run lint         # Run ESLint
 ```
 
-## Screenshots
-
-<img width="350" height="350" alt="Macbook-Air-localhost (1)" src="https://github.com/user-attachments/assets/dd009cc9-17ab-4c59-af21-d06ed6eb7cfd" />
-<img width="125" height="350" alt="iPhone-14-Plus-localhost" src="https://github.com/user-attachments/assets/5db30642-56ce-4e76-820c-74a5a04b1df5" />
 
 ---
 
