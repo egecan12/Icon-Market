@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectError, selectHasError, clearError } from '../../store/iconsSlice';
+import { selectError, selectHasError, clearError } from '../../store/errorSlice';
 import './ErrorNotification.css';
 
 const ErrorNotification = () => {

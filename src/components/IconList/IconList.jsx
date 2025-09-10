@@ -1,8 +1,12 @@
 import React from 'react'
+import { useDispatch } from 'react-redux';
+import { setError } from '../../store/errorSlice';
 import IconItem from "../IconItem";
 import './IconList.css';
 
 export default function IconList({ icons, selectedIcon, onIconClick }) {
+  const dispatch = useDispatch();
+  
   // Validation and error handling for props
   try {
     if (!icons) {
@@ -22,6 +26,10 @@ export default function IconList({ icons, selectedIcon, onIconClick }) {
       }
     });
   } catch (error) {
+    dispatch(setError({ 
+      message: error.message,
+      type: 'validation'
+    }));
     return (
       <div className="error-state">
         <h3>Data Error</h3>

@@ -8,9 +8,6 @@ const initialState = {
   searchTerm: '',
   selectedCategory: 'All',
   categories: ['All', ...Array.from(new Set(iconsData.map(icon => icon.category)))],
-  // Error handling state
-  error: null,
-  hasError: false,
   loading: false
 }
 
@@ -30,36 +27,14 @@ const iconsSlice = createSlice({
       iconsSlice.caseReducers.filterIcons(state)
     },
     filterIcons: (state) => {
-      try {
-        state.filteredIcons = state.allIcons.filter(icon => {
-          const matchesCategory = state.selectedCategory === "All" || icon.category === state.selectedCategory
-          const matchesSearch = icon.name.toLowerCase().includes(state.searchTerm.toLowerCase())
-          return matchesCategory && matchesSearch
-        })
-        // Clear any previous errors on successful operation
-        state.error = null
-        state.hasError = false
-      } catch (error) {
-        state.error = "Failed to filter icons. Please try again."
-        state.hasError = true
-      }
-    },
-    // Error handling actions
-    setError: (state, action) => {
-      state.error = action.payload
-      state.hasError = true
-    },
-    clearError: (state) => {
-      state.error = null
-      state.hasError = false
+      state.filteredIcons = state.allIcons.filter(icon => {
+        const matchesCategory = state.selectedCategory === "All" || icon.category === state.selectedCategory
+        const matchesSearch = icon.name.toLowerCase().includes(state.searchTerm.toLowerCase())
+        return matchesCategory && matchesSearch
+      })
     },
     setLoading: (state, action) => {
       state.loading = action.payload
-    },
-    // Basic error handling actions
-    handleError: (state, action) => {
-      state.error = action.payload;
-      state.hasError = true;
     }
   }
 })
@@ -68,11 +43,8 @@ export const {
   setSelectedIcon, 
   setSearchTerm, 
   setSelectedCategory, 
-  filterIcons, 
-  setError, 
-  clearError, 
-  setLoading,
-  handleError
+  filterIcons,
+  setLoading
 } = iconsSlice.actions
 
 // All of my Selectors located here
@@ -83,8 +55,6 @@ export const selectSearchTerm = (state) => state.icons.searchTerm
 export const selectSelectedCategory = (state) => state.icons.selectedCategory
 export const selectCategories = (state) => state.icons.categories
 // Error handling selectors
-export const selectError = (state) => state.icons.error
-export const selectHasError = (state) => state.icons.hasError
 export const selectLoading = (state) => state.icons.loading
 
 export default iconsSlice.reducer

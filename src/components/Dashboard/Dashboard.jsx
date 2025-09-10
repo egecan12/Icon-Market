@@ -9,11 +9,13 @@ import {
     selectSearchTerm,
     selectSelectedCategory,
     selectCategories,
-    selectLoading,
+    selectLoading
+} from '../../store/iconsSlice'
+import {
     selectHasError,
     clearError,
-    handleError
-} from '../../store/iconsSlice'
+    setError
+} from '../../store/errorSlice'
 import IconList from '../IconList';
 import IconDetail from '../IconDetail';
 import SearchBar from '../SearchBar';
@@ -45,6 +47,14 @@ export default function Dashboard() {
     // Error handling functions
     const handleClearError = () => {
         dispatch(clearError());
+    };
+
+    // Error handling for data operations
+    const handleDataError = (error) => {
+        dispatch(setError({
+            message: error.message,
+            type: 'data'
+        }));
     };
 
     return (
