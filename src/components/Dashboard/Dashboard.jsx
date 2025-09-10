@@ -11,8 +11,8 @@ import {
     selectCategories,
     selectLoading,
     selectHasError,
-    triggerDemoError,
-    clearError
+    clearError,
+    handleError
 } from '../../store/iconsSlice'
 import IconList from '../IconList';
 import IconDetail from '../IconDetail';
@@ -42,11 +42,7 @@ export default function Dashboard() {
         dispatch(setSelectedCategory(category));
     };
 
-    // Demo functions for presentation
-    const handleDemoError = () => {
-        dispatch(triggerDemoError());
-    };
-
+    // Error handling functions
     const handleClearError = () => {
         dispatch(clearError());
     };
@@ -70,25 +66,15 @@ export default function Dashboard() {
                     <div className="stats-info">
                         {filteredIcons.length} icons found
                     </div>
-                    {/* Demo buttons for presentation */}
-                    <div className="demo-controls">
+                    {hasError && (
                         <button 
-                            className="demo-error-btn"
-                            onClick={handleDemoError}
-                            title="Demo: Trigger Error"
+                            className="clear-error-btn"
+                            onClick={handleClearError}
+                            title="Clear Error"
                         >
-                            Demo Error
+                            Clear Error
                         </button>
-                        {hasError && (
-                            <button 
-                                className="demo-clear-btn"
-                                onClick={handleClearError}
-                                title="Clear Error"
-                            >
-                                Clear Error
-                            </button>
-                        )}
-                    </div>
+                    )}
                 </div>
             </div>
 

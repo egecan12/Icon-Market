@@ -56,10 +56,10 @@ const iconsSlice = createSlice({
     setLoading: (state, action) => {
       state.loading = action.payload
     },
-    // Demo action to trigger error for presentation
-    triggerDemoError: (state) => {
-      state.error = "Demo error: Something went wrong while processing icons!"
-      state.hasError = true
+    // Basic error handling actions
+    handleError: (state, action) => {
+      state.error = action.payload;
+      state.hasError = true;
     }
   }
 })
@@ -71,8 +71,8 @@ export const {
   filterIcons, 
   setError, 
   clearError, 
-  setLoading, 
-  triggerDemoError 
+  setLoading,
+  handleError
 } = iconsSlice.actions
 
 // All of my Selectors located here

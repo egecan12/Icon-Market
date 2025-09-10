@@ -3,21 +3,30 @@ import IconItem from "../IconItem";
 import './IconList.css';
 
 export default function IconList({ icons, selectedIcon, onIconClick }) {
-  // Error handling for invalid props
-  if (!icons) {
-    return (
-      <div className="error-state">
-        <h3>Unable to load icons</h3>
-        <p>There was an error loading the icon data. Please try refreshing the page.</p>
-      </div>
-    );
-  }
+  // Validation and error handling for props
+  try {
+    if (!icons) {
+      throw new Error("No icon data available");
+    }
 
-  if (!Array.isArray(icons)) {
+    if (!Array.isArray(icons)) {
+      throw new Error("Invalid icon data format");
+    }
+
+    icons.forEach(icon => {
+      if (!icon || typeof icon !== 'object') {
+        throw new Error("Invalid icon object in data");
+      }
+      if (!icon.name || !icon.category) {
+        throw new Error("Missing required icon properties");
+      }
+    });
+  } catch (error) {
     return (
       <div className="error-state">
-        <h3>Invalid icon data</h3>
-        <p>The icon data format is invalid. Please contact support.</p>
+        <h3>Data Error</h3>
+        <p>{error.message}</p>
+        <p>Please try refreshing the page or contact support if the issue persists.</p>
       </div>
     );
   }
