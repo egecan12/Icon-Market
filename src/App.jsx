@@ -1,15 +1,20 @@
 import { useState } from 'react'
 import Dashboard from './components/Dashboard'
+import ErrorBoundary from './components/ErrorBoundary'
+import ErrorNotification from './components/ErrorNotification'
 import './App.css'
 
 function App() {
   return (
-    <div className="app-container">
-      <header>
-        <h1>Iconflix</h1>
-      </header>
-      <Dashboard />
-    </div>
+    <ErrorBoundary>
+      <div className="app-container">
+        <header>
+          <h1>Iconflix</h1>
+        </header>
+        <ErrorNotification />
+        <Dashboard />
+      </div>
+    </ErrorBoundary>
   )
 }
 

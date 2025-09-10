@@ -8,7 +8,11 @@ import {
     selectSelectedIcon,
     selectSearchTerm,
     selectSelectedCategory,
-    selectCategories
+    selectCategories,
+    selectLoading,
+    selectHasError,
+    triggerDemoError,
+    clearError
 } from '../../store/iconsSlice'
 import IconList from '../IconList';
 import IconDetail from '../IconDetail';
@@ -23,6 +27,8 @@ export default function Dashboard() {
     const searchTerm = useSelector(selectSearchTerm);
     const selectedCategory = useSelector(selectSelectedCategory);
     const categories = useSelector(selectCategories);
+    const loading = useSelector(selectLoading);
+    const hasError = useSelector(selectHasError);
 
     const handleIconClick = (icon) => {
         dispatch(setSelectedIcon(icon));
@@ -34,6 +40,15 @@ export default function Dashboard() {
 
     const handleCategoryChange = (category) => {
         dispatch(setSelectedCategory(category));
+    };
+
+    // Demo functions for presentation
+    const handleDemoError = () => {
+        dispatch(triggerDemoError());
+    };
+
+    const handleClearError = () => {
+        dispatch(clearError());
     };
 
     return (
@@ -54,6 +69,25 @@ export default function Dashboard() {
                 <div className="controls-right">
                     <div className="stats-info">
                         {filteredIcons.length} icons found
+                    </div>
+                    {/* Demo buttons for presentation */}
+                    <div className="demo-controls">
+                        <button 
+                            className="demo-error-btn"
+                            onClick={handleDemoError}
+                            title="Demo: Trigger Error"
+                        >
+                            Demo Error
+                        </button>
+                        {hasError && (
+                            <button 
+                                className="demo-clear-btn"
+                                onClick={handleClearError}
+                                title="Clear Error"
+                            >
+                                Clear Error
+                            </button>
+                        )}
                     </div>
                 </div>
             </div>
