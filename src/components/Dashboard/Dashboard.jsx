@@ -1,5 +1,15 @@
-import React, { useState } from 'react'
-import iconsData from '../../data/icon-index.json'
+import React from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { 
+    setSelectedIcon, 
+    setSearchTerm, 
+    setSelectedCategory,
+    selectFilteredIcons,
+    selectSelectedIcon,
+    selectSearchTerm,
+    selectSelectedCategory,
+    selectCategories
+} from '../../store/iconsSlice'
 import IconList from '../IconList';
 import IconDetail from '../IconDetail';
 import SearchBar from '../SearchBar';
@@ -7,18 +17,24 @@ import CategoryFilter from '../CategoryFilter';
 import './Dashboard.css';
 
 export default function Dashboard() {
+    const dispatch = useDispatch();
+    const filteredIcons = useSelector(selectFilteredIcons);
+    const selectedIcon = useSelector(selectSelectedIcon);
+    const searchTerm = useSelector(selectSearchTerm);
+    const selectedCategory = useSelector(selectSelectedCategory);
+    const categories = useSelector(selectCategories);
 
-    const [selectedIcon, setSelectedIcon] = useState(null);
-    const [selectedCategory, setSelectedCategory] = useState('All');
-    const [searchTerm, setSearchTerm] = useState('');
+    const handleIconClick = (icon) => {
+        dispatch(setSelectedIcon(icon));
+    };
 
-    const categories = ['All', ...Array.from(new Set(iconsData.map(icon => icon.category)))];
+    const handleSearchChange = (term) => {
+        dispatch(setSearchTerm(term));
+    };
 
-    const filteredIcons = iconsData.filter(icon => {
-        const matchesCategory = selectedCategory === "All" || icon.category === selectedCategory;
-        const matchesSearch = icon.name.toLowerCase().includes(searchTerm.toLowerCase());
-        return matchesCategory && matchesSearch;
-    });
+    const handleCategoryChange = (category) => {
+        dispatch(setSelectedCategory(category));
+    };
 
     return (
         <div className="main-layout">
@@ -27,12 +43,12 @@ export default function Dashboard() {
                 <div className="controls-left">
                     <SearchBar 
                         searchTerm={searchTerm} 
-                        onSearchChange={setSearchTerm} 
+                        onSearchChange={handleSearchChange} 
                     />
                     <CategoryFilter 
                         categories={categories}
                         selectedCategory={selectedCategory}
-                        onCategoryChange={setSelectedCategory}
+                        onCategoryChange={handleCategoryChange}
                     />
                 </div>
                 <div className="controls-right">
@@ -50,7 +66,7 @@ export default function Dashboard() {
                         <IconList
                             icons={filteredIcons}
                             selectedIcon={selectedIcon}
-                            onIconClick={setSelectedIcon}
+                            onIconClick={handleIconClick}
                         />
                     </div>
                 </div>
