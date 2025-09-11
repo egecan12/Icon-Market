@@ -91,6 +91,13 @@ Access at http://localhost:3000
 npm run dev          # Development server
 npm run build        # Production build
 npm run lint         # Code quality check
+npm run test         # Run tests
+npm run test:run     # Run tests once
+
+# Utility scripts
+node src/utils/svg2json.js                    # Convert SVG files to JSON
+node src/utils/category-formatter.js format   # Clean category names
+node src/utils/category-formatter.js preview  # Preview category changes
 ```
 
 ---
