@@ -88,6 +88,64 @@ Access at http://localhost:3000
 <img width="657" height="758" alt="data-flow-examle drawio (2)" src="https://github.com/user-attachments/assets/ad1697ae-72fd-4322-a3a0-4e2d33848830" />
 
 
+## Technical Decisions & Trade-offs
+
+### Search Implementation
+- **Case-Insensitive Search** - Implemented for better UX, as requirements didn't specify case sensitivity
+- **Real-time Filtering** - Chosen over debounced search for immediate feedback
+- **Client-side Search** - Selected for faster response times with current dataset size
+
+### Data Structure Considerations
+- **Current**: Flat array structure for simplicity and quick implementation
+- **Trade-off**: Some memory duplication with repeated category strings across icons
+- **Performance Impact**: Minimal with current dataset (~118 icons), but scalability concerns noted
+
+### Validation Strategy
+- **Basic Type Checking** - Implemented array validation and null checks
+- **Missing Specifications**: 
+  - Icon name character restrictions not defined
+  - Category naming conventions unclear
+  - SVG content validation criteria unspecified
+
+## Future Improvements
+
+### Performance Optimizations
+```javascript
+// Current: Flat array (simplified)
+[
+  { name: "home", category: "interface", svg: "..." },
+  { name: "user", category: "interface", svg: "..." }
+]
+
+// Proposed: Nested object structure (memory efficient)
+{
+  "interface": [
+    { name: "home", svg: "..." },
+    { name: "user", svg: "..." }
+  ],
+  "arrows": [...]
+}
+```
+
+### Enhanced Validation
+- **Icon Name Validation** - Define allowed characters and length limits
+- **SVG Content Validation** - Implement proper SVG syntax and security checks
+- **Category Standards** - Establish naming conventions and validation rules
+- **Runtime Schema Validation** - Add Zod or similar for comprehensive data validation
+
+### Scalability Improvements
+- **Virtual Scrolling** - For handling 1000+ icons efficiently
+- **Search Debouncing** - Reduce unnecessary filtering operations
+- **Lazy Loading** - Load SVG content on demand
+- **Caching Strategy** - Implement proper browser and server-side caching
+
+### Questions for Product Team
+1. **Search Behavior**: Should search be case-sensitive? Current implementation is case-insensitive
+2. **Icon Naming**: What character restrictions should apply to icon names?
+3. **Category Structure**: Are nested categories planned? How deep should hierarchy go?
+4. **Validation Criteria**: What constitutes a valid SVG? Security considerations?
+5. **Performance Requirements**: Expected dataset size and search performance targets?
+
 ## Development Commands
 
 ```bash
