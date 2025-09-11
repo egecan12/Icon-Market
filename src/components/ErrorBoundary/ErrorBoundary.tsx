@@ -59,18 +59,6 @@ class ErrorBoundary extends React.Component<Props, State> {
                 Refresh Page
               </button>
             </div>
-
-            {/* Show detailed error in development */}
-            {process.env.NODE_ENV === 'development' && (
-              <details className="error-details">
-                <summary>Error Details (Development Only)</summary>
-                <pre className="error-stack">
-                  {this.state.error && this.state.error.toString()}
-                  <br />
-                  {this.state.errorInfo?.componentStack}
-                </pre>
-              </details>
-            )}
           </div>
         </div>
       );

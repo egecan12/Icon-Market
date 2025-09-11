@@ -48,7 +48,7 @@ export default function Dashboard() {
         dispatch(clearError());
     };
 
-    // Error handling for data operations (for future use)
+    // Error handling for data operations in case of needed in future
     // const handleDataError = (error: Error) => {
     //     dispatch(setError({
     //         message: error.message,
