@@ -27,7 +27,7 @@ function IconDetail({ icon }: IconDetailProps) {
       await navigator.clipboard.writeText(icon.name);
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
-    } catch (err) {
+        } catch {
       alert("Failed to copy icon name");
     }
   };
@@ -37,7 +37,7 @@ function IconDetail({ icon }: IconDetailProps) {
       await navigator.clipboard.writeText(icon.svg || '');
       setSVGCopied(true);
       setTimeout(() => setSVGCopied(false), 2000);
-    } catch (err) {
+        } catch {
       alert("Failed to copy SVG code");
     }
   };
