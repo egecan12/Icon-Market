@@ -1,7 +1,7 @@
-import React from 'react'
+import type { SearchBarProps } from '../../types';
 import './SearchBar.css'
 
-export default function SearchBar({ searchTerm, onSearchChange }) {
+export default function SearchBar({ searchTerm, onSearchChange }: SearchBarProps) {
   return (
     <div className="search-section">
       <div className="search-container">

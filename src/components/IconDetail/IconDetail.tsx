@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import DOMPurify from 'dompurify';
+import type { IconDetailProps } from '../../types';
 import './IconDetail.css';
 
-function IconDetail({ icon }) {
+function IconDetail({ icon }: IconDetailProps) {
   const [copied, setCopied] = useState(false);
   const [SVGCopied, setSVGCopied] = useState(false);
   const [downloaded, setDownloaded] = useState(false);
@@ -26,23 +27,23 @@ function IconDetail({ icon }) {
       await navigator.clipboard.writeText(icon.name);
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
-    } catch (err) {
+        } catch {
       alert("Failed to copy icon name");
     }
   };
 
   const handleCopySVG = async () => {
     try {
-      await navigator.clipboard.writeText(icon.svg);
+      await navigator.clipboard.writeText(icon.svg || '');
       setSVGCopied(true);
       setTimeout(() => setSVGCopied(false), 2000);
-    } catch (err) {
+        } catch {
       alert("Failed to copy SVG code");
     }
   };
 
   const handleDownload = () => {
-    const blob = new Blob([icon.svg], { type: "image/svg+xml" });
+    const blob = new Blob([icon.svg || ''], { type: "image/svg+xml" });
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
@@ -59,7 +60,7 @@ function IconDetail({ icon }) {
       <div className="icon-detail-header">
         <div className="icon-detail-preview">
           <div className="icon-preview-bg">
-            <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(icon.svg) }} />
+            <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(icon.svg || '') }} />
           </div>
         </div>
         <div className="icon-detail-info">

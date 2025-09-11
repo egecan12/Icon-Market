@@ -1,7 +1,7 @@
-import React from 'react'
+import type { CategoryFilterProps } from '../../types';
 import './CategoryFilter.css'
 
-export default function CategoryFilter({ categories, selectedCategory, onCategoryChange }) {
+export default function CategoryFilter({ categories, selectedCategory, onCategoryChange }: CategoryFilterProps) {
   return (
     <div className="category-filter">
       <label htmlFor="category-select">Category</label>

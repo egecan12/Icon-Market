@@ -1,0 +1,85 @@
+.error-notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  max-width: 400px;
+  animation: slideInRight 0.3s ease-out;
+}
+
+.error-notification-content {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 1rem;
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.error-notification-icon {
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+
+.error-notification-message {
+  color: #721c24;
+  font-weight: 500;
+  line-height: 1.4;
+  flex-grow: 1;
+}
+
+.error-notification-close {
+  background: none;
+  border: none;
+  color: #721c24;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  flex-shrink: 0;
+  transition: background-color 0.2s ease;
+}
+
+.error-notification-close:hover {
+  background-color: rgba(114, 28, 36, 0.1);
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Success variant for future use */
+.success-notification .error-notification-content {
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+}
+
+.success-notification .error-notification-message,
+.success-notification .error-notification-close {
+  color: #155724;
+}
+
+/* Warning variant for future use */
+.warning-notification .error-notification-content {
+  background-color: #fff3cd;
+  border-color: #ffeaa7;
+}
+
+.warning-notification .error-notification-message,
+.warning-notification .error-notification-close {
+  color: #856404;
+}

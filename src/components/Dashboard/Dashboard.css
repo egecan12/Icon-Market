@@ -24,6 +24,40 @@
   align-items: center;
 }
 
+.demo-controls {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.demo-error-btn, .demo-clear-btn {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.demo-error-btn {
+  background-color: #dc3545;
+  color: white;
+}
+
+.demo-error-btn:hover {
+  background-color: #c82333;
+}
+
+.demo-clear-btn {
+  background-color: #28a745;
+  color: white;
+}
+
+.demo-clear-btn:hover {
+  background-color: #218838;
+}
+
 .stats-info {
   color: var(--text-muted);
   font-size: 0.875rem;
