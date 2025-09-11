@@ -1,9 +1,10 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { ErrorState, ErrorPayload } from '../types'
 
-const initialState = {
+const initialState: ErrorState = {
   error: null,
   hasError: false,
-  errorType: null, // 'validation', 'network', 'data', etc.
+  errorType: null,
   timestamp: null
 }
 
@@ -11,7 +12,7 @@ const errorSlice = createSlice({
   name: 'error',
   initialState,
   reducers: {
-    setError: (state, action) => {
+    setError: (state, action: PayloadAction<ErrorPayload>) => {
       state.error = action.payload.message
       state.hasError = true
       state.errorType = action.payload.type || 'general'
@@ -29,9 +30,9 @@ const errorSlice = createSlice({
 export const { setError, clearError } = errorSlice.actions
 
 // Selectors
-export const selectError = (state) => state.error.error
-export const selectHasError = (state) => state.error.hasError
-export const selectErrorType = (state) => state.error.errorType
-export const selectErrorTimestamp = (state) => state.error.timestamp
+export const selectError = (state: { error: ErrorState }) => state.error.error
+export const selectHasError = (state: { error: ErrorState }) => state.error.hasError
+export const selectErrorType = (state: { error: ErrorState }) => state.error.errorType
+export const selectErrorTimestamp = (state: { error: ErrorState }) => state.error.timestamp
 
 export default errorSlice.reducer

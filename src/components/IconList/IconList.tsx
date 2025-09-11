@@ -1,10 +1,10 @@
-import React from 'react'
 import { useDispatch } from 'react-redux';
 import { setError } from '../../store/errorSlice';
+import type { IconListProps } from '../../types';
 import IconItem from "../IconItem";
 import './IconList.css';
 
-export default function IconList({ icons, selectedIcon, onIconClick }) {
+export default function IconList({ icons, selectedIcon, onIconClick }: IconListProps) {
   const dispatch = useDispatch();
   
   // Validation and error handling for props
@@ -26,14 +26,15 @@ export default function IconList({ icons, selectedIcon, onIconClick }) {
       }
     });
   } catch (error) {
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error occurred';
     dispatch(setError({ 
-      message: error.message,
+      message: errorMessage,
       type: 'validation'
     }));
     return (
       <div className="error-state">
         <h3>Data Error</h3>
-        <p>{error.message}</p>
+        <p>{errorMessage}</p>
         <p>Please try refreshing the page or contact support if the issue persists.</p>
       </div>
     );
@@ -62,7 +63,7 @@ export default function IconList({ icons, selectedIcon, onIconClick }) {
             <IconItem
               key={icon.name}
               icon={icon}
-              isSelected={selectedIcon && selectedIcon.name === icon.name}
+              isSelected={Boolean(selectedIcon && selectedIcon.name === icon.name)}
               onClick={() => onIconClick(icon)}
             />
           );

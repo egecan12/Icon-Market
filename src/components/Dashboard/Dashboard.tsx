@@ -1,5 +1,6 @@
-import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import type { RootState, AppDispatch } from '../../store/store'
+import type { Icon } from '../../types'
 import { 
     setSelectedIcon, 
     setSearchTerm, 
@@ -8,13 +9,11 @@ import {
     selectSelectedIcon,
     selectSearchTerm,
     selectSelectedCategory,
-    selectCategories,
-    selectLoading
+    selectCategories
 } from '../../store/iconsSlice'
 import {
     selectHasError,
-    clearError,
-    setError
+    clearError
 } from '../../store/errorSlice'
 import IconList from '../IconList';
 import IconDetail from '../IconDetail';
@@ -23,24 +22,24 @@ import CategoryFilter from '../CategoryFilter';
 import './Dashboard.css';
 
 export default function Dashboard() {
-    const dispatch = useDispatch();
-    const filteredIcons = useSelector(selectFilteredIcons);
-    const selectedIcon = useSelector(selectSelectedIcon);
-    const searchTerm = useSelector(selectSearchTerm);
-    const selectedCategory = useSelector(selectSelectedCategory);
-    const categories = useSelector(selectCategories);
-    const loading = useSelector(selectLoading);
-    const hasError = useSelector(selectHasError);
+    const dispatch = useDispatch<AppDispatch>();
+    const filteredIcons = useSelector((state: RootState) => selectFilteredIcons(state));
+    const selectedIcon = useSelector((state: RootState) => selectSelectedIcon(state));
+    const searchTerm = useSelector((state: RootState) => selectSearchTerm(state));
+    const selectedCategory = useSelector((state: RootState) => selectSelectedCategory(state));
+    const categories = useSelector((state: RootState) => selectCategories(state));
+    // const loading = useSelector((state: RootState) => selectLoading(state));
+    const hasError = useSelector((state: RootState) => selectHasError(state));
 
-    const handleIconClick = (icon) => {
+    const handleIconClick = (icon: Icon) => {
         dispatch(setSelectedIcon(icon));
     };
 
-    const handleSearchChange = (term) => {
+    const handleSearchChange = (term: string) => {
         dispatch(setSearchTerm(term));
     };
 
-    const handleCategoryChange = (category) => {
+    const handleCategoryChange = (category: string) => {
         dispatch(setSelectedCategory(category));
     };
 
@@ -49,13 +48,13 @@ export default function Dashboard() {
         dispatch(clearError());
     };
 
-    // Error handling for data operations
-    const handleDataError = (error) => {
-        dispatch(setError({
-            message: error.message,
-            type: 'data'
-        }));
-    };
+    // Error handling for data operations (for future use)
+    // const handleDataError = (error: Error) => {
+    //     dispatch(setError({
+    //         message: error.message,
+    //         type: 'data'
+    //     }));
+    // };
 
     return (
         <div className="main-layout">
