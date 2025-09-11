@@ -83,7 +83,7 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   const inputPath = process.argv[3] || './src/data/icon-index.json';
   
   switch (command) {
-    case 'preview':
+    case 'preview': {
       const previewResult = previewCategoryFormatting(inputPath);
       if (previewResult.success) {
         console.log('Category Formatting Preview:');
@@ -101,9 +101,10 @@ if (import.meta.url === `file://${process.argv[1]}`) {
         console.error('Error:', previewResult.error);
       }
       break;
+    }
       
     case 'format':
-    default:
+    default: {
       const formatResult = formatIconCategories(inputPath);
       if (formatResult.success) {
         console.log('Category formatting completed');
@@ -118,5 +119,6 @@ if (import.meta.url === `file://${process.argv[1]}`) {
         console.error('Error:', formatResult.error);
       }
       break;
+    }
   }
 }
