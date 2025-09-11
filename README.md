@@ -83,30 +83,10 @@ Access at http://localhost:3000
 
 ### Component Interaction Pattern
 
-**Unidirectional Data Flow:**
+**Unidirectional Data Flow: Example of 'Search' Action**
 
 <img width="657" height="758" alt="data-flow-examle drawio (2)" src="https://github.com/user-attachments/assets/ad1697ae-72fd-4322-a3a0-4e2d33848830" />
 
-```
-User Input → Action Dispatch → Reducer → Selector → UI Update
-```
-
-**Concrete Example:**
-1. User searches "home" in SearchBar
-2. `dispatch(setSearchTerm("home"))`
-3. iconsSlice reducer updates state + triggers filtering
-4. `selectFilteredIcons` selector returns filtered results
-5. IconList re-renders with new data
-
-### Responsive Design
-- **CSS Grid** - Auto-responsive icon grid with `repeat(auto-fill, minmax(140px, 1fr))`
-- **Flexbox** - Component-level layout and alignment
-- **Breakpoints** - Mobile-first approach with strategic media queries
-
-### Error Handling Patterns
-- **Component Level** - ErrorBoundary catches React component errors
-- **Application Level** - Redux error slice manages user-facing errors
-- **Data Validation** - Input validation with descriptive error messages
 
 ## Development Commands
 
