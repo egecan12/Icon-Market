@@ -21,6 +21,8 @@ A responsive icon library management system built with React and modern CSS arch
 
 ## Live Demo
 
+I have deployed it to Render.com. As it is on the free tier, it may take some time to wake the server up.
+
 🚀 **[View Live Demo](https://icon-market.onrender.com/)**
 
 Experience the application in action with full functionality including search, filtering, and responsive design.
@@ -68,11 +70,34 @@ npm install
 npm run dev
 ```
 
-### Docker Deployment
+### Docker Setup
+
+#### Prerequisites
+- Docker installed
+- Docker Compose installed
+
+#### Running with Docker
 ```bash
+# Start the project
 docker-compose up --build
 ```
-Access at http://localhost:3000
+
+The application will be available at **http://localhost:3000**
+
+#### Basic Docker Commands
+```bash
+# Start application
+docker-compose up
+
+# Run in background
+docker-compose up -d
+
+# Stop
+docker-compose down
+
+# View logs
+docker-compose logs
+```
 
 ## Key Implementation Details
 
@@ -142,8 +167,8 @@ Access at http://localhost:3000
 ### Questions for Product Team
 1. **Search Behavior**: Should search be case-sensitive? Current implementation is case-insensitive
 2. **Icon Naming**: What character restrictions should apply to icon names?
-3. **Category Structure**: Are nested categories planned? How deep should hierarchy go?
-4. **Validation Criteria**: What constitutes a valid SVG? Security considerations?
+3. **Category Structure**: Are nested categories planned? For better optimization.
+4. **Validation Criteria**: What is a valid SVG? Security considerations?
 5. **Performance Requirements**: Expected dataset size and search performance targets?
 
 ## Development Commands
