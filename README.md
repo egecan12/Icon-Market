@@ -117,8 +117,6 @@ docker-compose logs
 
 ### Search Implementation
 - **Case-Insensitive Search** - Implemented for better UX, as requirements didn't specify case sensitivity
-- **Real-time Filtering** - Chosen over debounced search for immediate feedback
-- **Client-side Search** - Selected for faster response times with current dataset size
 
 ### Data Structure Considerations
 - **Current**: Flat array structure for simplicity and quick implementation
