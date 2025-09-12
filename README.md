@@ -21,7 +21,7 @@ A responsive icon library management system built with React and modern CSS arch
 
 ## Live Demo
 
-*I have deployed it to Render.com. As it is on the free tier, it may take some time to wake the server up.
+*I have deployed it to Render.com. As it is on the free tier, it may take some time to wake the server up.*
 
 🚀 **[View Live Demo](https://icon-market.onrender.com/)**
 
